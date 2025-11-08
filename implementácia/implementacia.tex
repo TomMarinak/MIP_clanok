@@ -1,0 +1,82 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{acronym}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{array}  
+\usepackage{booktabs}
+
+
+\title{Mass Use of Drones for Civilian Purposes. (\textbf{MDCU})\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2024/25, vedenie: Vladimír Mlynarovič}}
+\author{Tomáš Mariňák, Dmytro Seredenko, Dominik Luksaj\\[2pt]
+	{\small Slovenská technická univerzita v Bratislave}\\
+	{\small Fakulta informatiky a informačných technológií}\\
+	{\small \texttt{xseredenkod@stuba.sk xmarinak@stuba.sk }}}
+\date{\small \today}
+
+\begin{document}
+\maketitle
+
+\section{IMPLEMENTÁCIA}
+
+Implementácia projektu bude realizovaná v niekoľkých navzájom prepojených etapách, ktoré zabezpečia tvorbu funkčného demonštračného modelu decentralizovanej siete dronov (ďalej „systém“) určeného pre civilné účely — doručovanie, pomoc v núdzi, monitorovanie bezpečnosti. Cieľom je predviesť technickú aj organizačnú realizovateľnosť tejto koncepcie v mestskom prostredí.
+
+\subsection*{Fáza 1: Analýza požiadaviek a špecifikácia systému}
+V tejto úvodnej fáze bude vykonaná hĺbková analýza potrieb relevantných užívateľov a strán — logistických operátorov, záchranných služieb, bezpečnostných zložiek a mestských správcov. Zameriame sa na definovanie základných funkčných požiadaviek systému, ako sú: registrácia dronov a staníc (tzv. uzlov siete), prideľovanie úloh dronom, sledovanie polohy a stavu dronov v reálnom čase, výmena dát medzi uzlami a centrálnou kontrolou, adaptívne plánovanie letových trás a reakcia na dynamické udalosti (napr. núdzové zásahy). Pri tejto analýze budeme vychádzať aj z literatúry týkajúcej sa siete dronov a ich komunikačných a riadiacich výziev — napríklad survey článok „Unmanned Aerial Vehicles: A Survey on Civil Applications and Key Research Challenges“\cite{Shakhatreh:UAVSurvey} uvádza, že jedným z hlavných problémov nasadenia dronov v civilných aplikáciách je výdrž batérie, vyhýbanie sa kolíziám a komplexné sieťové a bezpečnostné požiadavky. 
+
+\subsection*{Fáza 2: Návrh architektúry systému}
+Na základe analytických výstupov bude navrhnutá architektúra systému, založená na decentralizovanom modeli riadenia siete dronov. Predpokladom je, že mesto je pokryté množstvom staníc (uzlov) pre drony — tieto uzly budú vybavené nabíjacími/preskladacími modulmi, komunikačnou infraštruktúrou a lokalizačnými senzormi. Drony budú spravované autonómne v rámci pridelených oblastí a budú schopné komunikovať medzi uzlami cez mesh-sieť alebo prostredníctvom mobilnej siete (napr. 5G) ako záložnej infraštruktúry — čo korešponduje s prácou „A Survey on Cellular-connected UAVs: Design Challenges, Enabling 5G/B5G Innovations, and Experimental Advancements“\cite{Mishra:CellularUAV}. 
+Komunikačný model bude definovaný tak, že uzly môžu prijímať a odosielať informácie o pozícii, stave, úlohách a prioritách dronov v reálnom čase. Taktiež bude navrhnuté rozloženie letových zón, priemerné vzdialenosti dronov od staníc, režim nabíjania a výmenu dronov na staniciach.  
+Na modelovanie architektúry systému budú použité nástroje ako UML (use-case diagramy, komponentné diagramy) alebo nástroje vizualizácie (napr. Draw.io) a simulácie návrhov v prostredí Python, pričom budú využité knižnice pre simuláciu udalostí (napr. SimPy) a vizualizáciu trás a prevádzky. Tým sa overí funkčnosť návrhu pred implementáciou prototypu.
+
+\subsection*{Fáza 3: Vývoj prototypu a simulácia prevádzky}
+V tejto fáze bude vyvinutý demonštračný prototyp softvérovej časti systému. Prototyp bude pozostávať z komponentov: satelitný model alebo simulátor dronov, riadiaceho uzla (server) a jednoduchého používateľského rozhrania (web- alebo mobilná aplikácia) pre zadávanie úloh a vizualizáciu prevádzky. Simulácia bude demonštrovať spracovanie viacerých dronov súčasne v mestskej oblasti, prideľovanie úloh, nabíjanie a výmenu dronov na staniciach, reakciu na núdzové situácie a preladenie prevádzky podľa časových a priestorových parametrov. Výstup simulácie bude vizualizácia trás, využitia zdrojov (staníc, dronov), a analýza metrík ako priemerný čas doručenia/zásahu, percento využitia staníc, počet úloh za jednotku času. Tento prístup vychádza aj z literatúry „Networked Unmanned Aerial Vehicles for Surveillance and Monitoring: A Survey“\cite{Holland:NetworkedUAV}, ktorá skúma komunikačné modely a požiadavky na siete dronov pre civilné monitorovanie.
+
+Simulácia tiež umožní testovanie scenárov: masové doručenia zásielok počas špičky, paralelné zásahy pri rôznych udalostiach, a robustnosť systému pri výpadku jednej alebo viacerých staníc. Na základe výsledkov simulácie budú navrhnuté odporúčania pre veľkosť siete staníc, počet dronov, režim výmeny nabíjania a optimálne rozloženie uzlov.
+
+\subsection*{Fáza 4: Pilotné nasadenie a testovanie v reálnom prostredí}
+Po úspešnej simulácii bude navrhnutý plán pilotného nasadenia v obmedzenom mestskom území – napríklad v konkrétnej mestskej časti. Vybraný segment bude slúžiť na testovanie systému v reálnych podmienkach – doručenie malých zásielok, zásah dronu v simulovanej núdzovej situácii (napr. doručenie výbavy prvej pomoci) a monitorovanie vybranej oblasti pomocou siete dronov. Pilotné nasadenie umožňuje reálne overenie komunikácie, reakčného času, bezpečnostných aspektov a koordinácie medzi dronmi a uzlami. Bude definované monitorovanie výkonnosti systému – napríklad spoľahlivosť komunikácie, úspešnosť vykonania úloh, využitie batérií, výpadky dronov či staníc, latencia riadenia. V tejto fáze budú vyriešené aj otázky integrácie s existujúcou infraštruktúrou (napr. logistické centrá, zásahové zložky) a budú definované prevádzkové postupy a bezpečnostné protokoly.
+Zohľadnené budú aj legislatívne aspekty nasadenia dronovej siete v meste – koordinácia s letovými službami, pravidlá nasadzovania dronov nad urbanizovaným územím, ochrana osobných údajov a bezpečnostné opatrenia.
+
+\subsection*{Fáza 5: Vyhodnotenie, optimalizácia a dokumentácia}
+Na záver bude vykonané vyhodnotenie pilotného nasadenia – zber dát o prevádzke systému, analýza výkonnosti a identifikácia úzkych miest (napr. stanice s nábehom na preťaženie, oblasť s nízkym pokrytím, nadmerné čakanie dronov na výmenu batérie). Na základe týchto dát bude realizovaná optimalizácia — úprava počtu dronov a staníc, prepracovanie atribučného modelu prideľovania úloh, vylepšenie komunikačných protokolov a plánovanie letových trás. Dokumentácia bude zahŕňať technickú správu, používateľskú príručku pre systém, návrh správy prevádzky siete a odporúčania pre škálovanie systému v širšom mestskom prostredí.
+
+\section{Rozpočet}
+
+\begin{tabular}{|>{\raggedright}p{5cm}|>{\raggedright}p{7cm}|r|}
+\hline
+\textbf{Položka} & \textbf{Množstvo / popis} & \textbf{Odhad nákladu (EUR)} \\
+\hline
+Drony (5 ks) & civilné viacúčelové drony, vrátane senzora a komunikácie & 12000 \\
+\hline
+Nabíjacie/prenášacie stanice (3 ks) & modulárne uzly so stanicou na výmenu batérií + sieťové pripojenie & 6000 \\
+\hline
+Komunikačná infraštruktúra & router/mesh-uzly, SIM/konektivita 5G pre testovacie nasadenie & 3000 \\
+\hline
+Vývoj softvéru a simulácie & licencie, vývojári, testovanie (2 mesiace práce) & 8000 \\
+\hline
+Legislatíva/súlad s normami & konzultácie, povolenia, bezpečnostné protokoly & 1500 \\
+\hline
+Pilotné nasadenie & prenájom priestoru, testovacie scenáre & 2500 \\
+\hline
+Rezerva (cca 10\%) & nepredvídané výdavky & 3000 \\
+\hline
+\textbf{Celkom} & & \textbf{36000} \\
+\hline
+\end{tabular}
+
+\noindent\textit{Poznámka: Rozpočet je orientačný a bude doladený v rámci ďalšej fázy projektu.}
+
+\bibliographystyle{unsrt}
+\bibliography{literatura_implementacia}
+
+\end{document}
+
+
+
+
