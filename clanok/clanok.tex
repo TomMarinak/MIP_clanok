@@ -1,21 +1,21 @@
-% Metódy inžinierskej práce
-
-\documentclass[10pt,twoside,slovak,a4paper]{article}
+\documentclass[10pt,a4paper]{article}
 
 \usepackage[slovak]{babel}
-%\usepackage[T1]{fontenc}
-\usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{url} % príkaz \url na formátovanie URL
-\usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
-
+\usepackage{amsmath}
+\usepackage{hyperref}
 \usepackage{cite}
-%\usepackage{times}
+\usepackage{acronym}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{array}  
+\usepackage{booktabs}
 
+
+\setlength{\parskip}{15pt}
 \pagestyle{headings}
 
-\title{Masové používanie dronov na civilne účely . (\textbf{MDCU})\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2024/25, vedenie: Vladimír Mlynarovič}} % meno a priezvisko vyučujúceho na cvičeniach
+\title{Masové používanie dronov na civilne účely. (\textbf{MDCU})\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2024/25, vedenie: Vladimír Mlynarovič}} % meno a priezvisko vyučujúceho na cvičeniach
 \author{Tomáš Mariňák, Dmytro Seredenko,  Dominik Luksaj\\[2pt]
 	{\small Slovenská technická univerzita v Bratislave}\\
 	{\small Fakulta informatiky a informačných technológií}\\
@@ -29,41 +29,124 @@
 
 \begin{abstract}
 
+Tento projekt sa zaoberá otázkami rozsiahleho nasadenia bezpilotných vzdušných prostriedkov (UAV) v moderných smart mestách. Skúma technické a spoločenské a legislatívne a ekonomické dopady rozsiahlej flotily dronov. Taktiež analyzuje problémy spojené s ich začlenením do mestského i prímestského okolia. Cieľom projektu je návrh a overenie decentralizovanej architektúry na riadenie dronov s pokročilými algoritmami koordinácie, modernými senzorickými technológiami, komunikačnými infraštruktúrami 5G/mesh a podporou konceptu U-space podľa európskych štandardov. Súčasťou je skúmanie použitia dronov v oblasti mestskej správy, logistiky, zdravotnej starostlivosti a sledovania infraštruktúry. Interdisciplinárny prístup zoskupujúci urbanizmus, informatiku, automatizáciu ako aj telekomunikácie projekt prináša a taktiež predstavuje potenciálne jadro budúcej urbánnej vzdušnej mobility.
+
 \end{abstract}
 
 
 
-\section{Úvod}
+
+\section{Dopad projektu na spoločnosť a technologický ekosystém}
+
+\subsection{Prínos pre výskum, aplikovaný vývoj a inovácie}
+Projekt MDCU predstavuje komplexný a výrazne nadštandardný prístup k využívaniu dronov v mestskom prostredí, pretože oproti individuálnemu nasadeniu UAV prináša nové metodiky pre koordináciu veľkých flotíl, riadenie autonómnych letov a organizáciu nízkoletového vzdušného priestoru. Medzi jeho najvýznamnejšie vedecké prínosy patrí predovšetkým vývoj algoritmov na optimalizáciu letových trás, prevenciu kolízií, predikciu rizikových situácií a adaptívne rozhodovanie v dynamickom mestskom prostredí, pričom využíva širokú škálu prístupov od heuristických metód po multi-agentné systémy a distribuovanú umelú inteligenciu. Ďalším dôležitým prvkom je inovatívna senzorika, keďže rozvoj optických, termálnych a LIDAR technológií zvyšuje bezpečnosť autonómnych letov v hustej zástavbe, pri nepriaznivom počasí alebo v oblastiach s obmedzenou viditeľnosťou. Projekt zároveň významne podporuje rozvoj európskeho konceptu U-space, posilňuje akademický aj praktický základ pre budovanie jednotného systému riadenia nízkeho vzdušného priestoru podľa odporúčaní EASA a vytvára predpoklady pre interoperabilitu slovenských riešení v rámci európskej leteckej infraštruktúry. Celkovo tak prispieva k interdisciplinárnemu výskumu prepojujúcemu informatiku, automatizáciu, letectvo, telekomunikácie, urbanizmus aj legislatívu.
+
+\subsection{Využiteľnosť výsledkov pre SR aj zahraničie}
+V rámci Slovenskej republiky aj v zahraničí je nasadenie dronov do logistiky a kuriérskych služieb perspektívne riešenie, ktoré by mohlo výrazne zefektívniť prepravu tovaru. Drony sú prevažne poháňané elektrinou, čo by zároveň znížilo ekologický dopad na životné prostredie v porovnaní s tradičnými dopravnými prostriedkami. Využitie dronov by mohlo prispieť k rýchlejšej a flexibilnejšej doprave menších zásielok, najmä v oblastiach so sťaženou dostupnosťou alebo pri urgentných dodávkach.
+
+V zdravotníctve by drony mohli zohrávať kľúčovú úlohu pri transportovaní urgentných zásielok, ako sú defibrilátory, lieky alebo iné život zachraňujúce pomôcky. Takéto riešenie by umožnilo výrazne skrátiť čas dodania kriticky dôležitých prostriedkov a prispelo by k zvýšeniu efektivity zdravotnej starostlivosti, najmä v núdzových situáciách alebo na ťažko dostupných miestach.
+
+V oblasti civilnej bezpečnosti by drony mohli pomáhať pri monitorovaní verejných priestorov, prevencii trestnej činnosti a rýchlej reakcii pri mimoriadnych udalostiach. Ich nasadenie by umožnilo zlepšiť bezpečnostný dohľad a zefektívniť zásahy zložiek bezpečnostných zložiek.
+
+Medzinárodne je možné drony integrovať do európskeho systému U-Space, ktorý je zameraný na efektívne vytváranie, koordináciu a manažovanie infraštruktúry pre drony. Tento systém umožňuje bezpečný a organizovaný letový priestor pre bezpilotné lietadlá a poskytuje podmienky pre masovejšie nasadenie dronov v mestskom i regionálnom prostredí.
+
+\subsection{Ekonomický dopad a tvorba hodnoty}
+Ekonomický prínos projektu je viacvrstvový a zahŕňa environmentálne efekty, podporu nových profesií aj priame finančné úspory. Z finančného hľadiska môže rozsiahle nasadenie dronov znížiť spotrebu paliva pri bežnej cestnej logistike, nahradiť mnohé manuálne postupy automatizovaným dohľadom, podstatne minimalizovať náklady na prepravu menších balíkov a prispieť k účinnejšiemu využívaniu zdrojov.
+
+Projekt zároveň formuje pracovný trh, pretože vytvára dopyt po nových špecializovaných pozíciách. Medzi takéto profesie patria operátori autonómnych letov, analytici letových dát, technici senzorických modulov alebo špecialisti na prevádzku systému U-Space. Týmto spôsobom projekt podporuje rozvoj nových kompetencií a zvyšuje kvalitu pracovnej sily v technologických oblastiach.
+
+Okrem ekonomických a pracovných benefitov je dôležitý aj ekologický a energetický aspekt. Elektrický pohon dronov znižuje uhlíkovú stopu dopravy a prispieva k udržateľnej mobilite v súlade s európskymi klimatickými politikami.
+
+Celkový ekonomický dopad projektu spočíva nielen v úsporách a zvýšenej efektivite, ale aj v posilnení inovačnej kapacity regiónu a rozvoji moderných technologických oblastí. Projekt tým podporuje dlhodobú konkurencieschopnosť a technologický pokrok, čím prispieva k trvalo udržateľnému rozvoju.
+
+\subsection{Technologie a limity súčasného stavu}
+Napriek neustálemu napredovaniu v oblasti dronov a UAV su stále dosť technologicky a fyzicky limitované. Baterie su dost neefektivne ako ich napajat pretože maximalna vydrz je v dnesnej dobe okolo 20-30min čo na nasadenie do logistiky nestačí. Taktiež maju obmedzenu maximalnu nosnosť na 2-5kg čo znamená ze kurierske spoločnosti by nemohli prevážať zásielky, ktorych váha by prevyšovala tuto hranicu čo je veľmi nevýhodne a preto aj väčšina spoločnosti zatiaľ do tejto oblasti logistiky intenzívne neinvestuje. Ďalším problémom je aj nedostatok štandardizovanej infraštruktúry U-space, po ktorej by sa drony pohybovali. Taktiež veľkým rizikom je počasie, najmä burky ktore by mohli poškodit telo dronu no taktiež vedia narušiť signál a dron nemusí isť správnym smerom.
+
+\subsection{Legislatívne prekážky a regulačné požiadavky}
+Nasledujú problémy s legislatívou, ktoré významne ovplyvňujú masové nasadenie dronov v mestskom prostredí. Najväčšou prekážkou sú náročné povolenia na BVLOS (Beyond Visual Line of Sight) prevádzku, teda na lety mimo vizuálneho dohľadu operátora. Keďže ide o rizikovú formu letu, EÚ vyžaduje rozsiahlu dokumentáciu, bezpečnostné postupy, komunikáciu so správcom vzdušného priestoru a preukázanie technickej spoľahlivosti dronu. Tento proces je časovo aj administratívne náročný, čo komplikuje škálovanie flotíl UAV.
+
+Ďalším problémom je riziková kategorizácia letov podľa metodiky SORA (Specific Operations Risk Assessment). Prevádzkovateľ musí pre každý let posúdiť riziká, definovať mitigácie, určiť minimálne technické požiadavky a pripraviť scenáre reakcií na mimoriadne situácie. Pri veľkom počte dronov ide o náročný a opakovaný proces, ktorý znižuje flexibilitu prevádzky.
+
+Zásadné sú aj požiadavky GDPR v súvislosti s používaním kamier a senzorov. Ak dron sníma osoby alebo objekty, ktoré umožňujú identifikáciu, prevádzkovateľ musí zabezpečiť ochranu údajov, minimalizáciu zberu dát a jasné informovanie verejnosti. To je náročné najmä pri lietaní v obývaných zónach, kde dochádza k nechcenému záznamu ľudí.
+Okrem toho sa prevádzkovatelia stretávajú s ďalšími prekážkami, ako sú limity pre hluk, obmedzenia rádiového spektra, otázky zodpovednosti za škody a nejednotná implementácia európskych pravidiel.
 
 
 
-\section{Nejaká časť} \label{nejaka}
+
+\section{Implementačný rámec projektu}
+
+\subsection{Analýza požiadaviek a definícia systému}
+Úvodná fáza projektu sa zameriava na dôkladnú analýzu potrieb používateľov a definovanie základnej štruktúry systému. V prvej etape sa identifikujú konkrétne požiadavky rôznych sektorov, ako sú logistika, zdravotníctvo či mestské služby, pričom sa berie do úvahy efektívnosť, bezpečnosť a špecifické potreby každého segmentu.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{diagram_postup.png}
+    \caption{Diagram implementačného rámca projektu}
+    \label{fig:diagram}
+\end{figure}
+
+Na základe týchto požiadaviek sú definované kľúčové funkcie systému, medzi ktoré patrí registrácia dronov, priraďovanie úloh jednotlivým jednotkám a sledovanie ich polohy v reálnom čase. Súčasne sa stanovujú technické požiadavky na senzory, batérie a komunikačné prostriedky, ktoré zabezpečia spoľahlivú a efektívnu prevádzku UAV.
+
+Projekt zároveň zahrňuje analýzu legislatívnych obmedzení, ktoré ovplyvňujú prevádzku dronov, vrátane pravidiel týkajúcich sa ochrany osobných údajov, leteckej bezpečnosti a prevádzky mimo vizuálnu líniu (BVLOS).
+
+Dôležitou súčasťou fázy je štúdium existujúcich technologických riešení a zahraničných výskumov. Projekt vychádza zo skúseností z UAV prieskumov civilných aplikácií, pričom kladie dôraz na výzvy a možnosti komunikácie v prostredí 5G a B5G. Tieto poznatky umožňujú navrhnúť systém, ktorý spája moderné technologické trendy s praktickými požiadavkami používateľov a súčasne rešpektuje legislatívne rámce.
+
+\subsection{Návrh architektúry systému}
+Navrhovaná architektúra systému je založená na decentralizovanom modeli, ktorý zabezpečuje flexibilitu, škálovateľnosť a odolnosť celej siete dronov. Mestské stanice, fungujúce ako uzly, slúžia na nabíjanie dronov, preskladnenie zásielok a lokalizáciu jednotlivých jednotiek, čím poskytujú základnú infraštruktúru pre efektívnu prevádzku.
+
+Horizontálna komunikácia medzi dronmi je realizovaná prostredníctvom mesh siete, čo umožňuje rýchlu a spoľahlivú výmenu informácií bez závislosti od centrálneho bodu. Mobilné siete, najmä 5G, slúžia ako záložný komunikačný kanál, čím sa zabezpečuje kontinuita operácií aj pri výpadku primárnej siete - čo korešponduje s prácou „A Survey on Cellular-connected UAVs: Design Challenges, Enabling 5G/B5G Innovations, and Experimental Advancements“\cite{Mishra:CellularUAV}.
+
+Pre lepšiu organizáciu a riadenie prevádzky sú mestské oblasti rozdelené do autonómnych zón, ktoré umožňujú efektívnejšiu koordináciu dronov a minimalizujú riziko kolízií. Riadiace protokoly systému určujú priraďovanie úloh jednotlivým dronom, optimalizujú trasovanie a koordináciu flotily, pričom berú do úvahy aktuálne prevádzkové podmienky.
+
+Návrh architektúry zahŕňa aj definovanie bezpečnostných scenárov, mechanizmov redundancie a postupov pre reakciu na núdzové situácie, čím sa zabezpečuje vysoká úroveň spoľahlivosti a bezpečnosti celého systému.
+
+\subsection{Prototyp a simulačné overenie systému}
+Pre overenie navrhnutého systému sa vytvorí simulačné prostredie, ktoré umožní testovanie jeho funkcií bez rizika reálnej prevádzky. Simulácie budú zahŕňať modelovanie pohybu dronov v mestskej mape, plánovanie trás pri zvýšenej doprave a reakcie systému na výpadok stanice.
+
+Okrem toho sa budú simulovať núdzové zásahy a vizualizovať letová prevádzka, čím sa identifikujú potenciálne problémy a úzke miesta v koordinácii flotily. Pri tvorbe prototypu sa využíju nástroje na modelovanie udalostí, napríklad SimPy, UML diagramy pre návrh procesov a špecializované vizualizačné nástroje, ktoré poskytujú prehľad o dynamike systému a umožňujú optimalizáciu jeho fungovania ešte pred nasadením do reálneho prostredia.
+
+\subsection{Pilotné nasadenie a testovanie v praxi}
+Po úspešnom overení systému v simulačnom prostredí nasleduje jeho testovanie v reálnych podmienkach na obmedzenej oblasti mesta. Cieľom pilotnej fázy je overiť praktickú funkčnosť navrhnutého systému a identifikovať možné nedostatky pred jeho širším nasadením.
+
+V rámci testovania sa hodnotí spoľahlivosť komunikácie medzi dronmi a centrálnymi uzlami, presnosť senzorov, reakčný čas dronov na priradené úlohy a bezpečné správanie v neštandardných situáciách. Zároveň sa posudzuje právna kompatibilita prevádzky, aby systém spĺňal všetky legislatívne požiadavky.
+
+Pilotná fáza predstavuje kľúčový krok smerom k reálnemu zavedeniu technológie, poskytuje cenné dáta pre optimalizáciu a zvyšuje dôveru používateľov aj regulačných orgánov v bezpečnosť a efektívnosť UAV systému.
 
 
 
-\section{Iná časť} \label{ine}
+
+\section{Excelentnosť projektu z vecného a odborného hľadiska}
+
+\subsection{Interdisciplinárne a systémové}
+Projekt spája viaceré oblasti, čím zabezpečuje komplexný prístup k návrhu a implementácii UAV systému. Medzi kľúčové oblasti patria AI technológie a robotika, senzorika, telekomunikácie vrátane 5G a mesh sietí, urbanizmus a koncepcie smart cities, ako aj legislatíva a bezpečnostné štandardy.
+
+Takéto prepojenie umožňuje riešiť problémy z rôznych uhlov pohľadu a vytvára systém, ktorý je technologicky robustný, legislatívne kompatibilný a prakticky využiteľný v mestskom prostredí. Integrácia týchto oblastí je charakteristická pre špičkové výskumné iniciatívy a zabezpečuje, že výsledný systém spĺňa nároky moderných smart city aplikácií.
+
+\subsection{Technologicky inovatívne}
+Kľúčovou inováciou projektu je decentralizovaná architektúra systému, ktorá prináša výrazné výhody oproti tradičným centralizovaným riadiacim modelom. Tento prístup umožňuje škálovanie flotily na stovky dronov, podporuje lokálne autonómne rozhodovanie a zvyšuje odolnosť systému voči výpadkom jednotlivých uzlov.
+
+Decentralizovaná architektúra zároveň umožňuje adaptívne správanie systému pri zmene prostredia alebo prevádzkových podmienok, čo zvyšuje flexibilitu a spoľahlivosť celého UAV riešenia. Tento model predstavuje nový prístup k riadeniu dronovej flotily a reflektuje moderné trendy vo vývoji inteligentných a autonómnych systémov.
+
+\subsection{Vysoko spoločensky prínosné}
+Projekt prináša významné spoločenské prínosy tým, že podporuje rýchlejšiu záchranu životov v zdravotníckych a núdzových situáciách, umožňuje efektívnejšiu správu mestských služieb a prispieva k ekologickejšej logistike.
+
+Okrem toho zvyšuje bezpečnosť a efektivitu monitoringu infraštruktúry, čím poskytuje mestám nástroje na prevenciu rizík a rýchlejšiu reakciu na neštandardné udalosti. Výsledný systém tak spája technologickú inováciu s konkrétnym spoločenským prínosom, čím podporuje udržateľný a inteligentný rozvoj mestského prostredia.
 
 
 
 
-\section{Dôležitá časť} \label{dolezita}
+\section{Očakávané výsledky}
+Projekt očakáva dosiahnutie viacerých konkrétnych a merateľných výsledkov, ktoré prispejú k rozvoju UAV technológií a ich integrácii do mestského prostredia. Jedným z hlavných výstupov bude funkčný prototyp systému, ktorý umožní praktické testovanie navrhnutých funkcií, od registrácie a sledovania dronov až po koordináciu úloh a autonómne rozhodovanie v decentralizovanom prostredí. Tento prototyp poslúži ako základ pre simulácie, pilotné testy a ďalší výskum v oblasti mestských UAV operácií.
+
+Projekt tiež poskytne detailnú analýzu dopadu dronov na rôzne sektory, vrátane logistiky, zdravotníctva a správy miest. Analýza sa zameria nielen na technologické aspekty, ako sú spoľahlivosť komunikácie, presnosť senzorov a efektívnosť riadiacich protokolov, ale aj na spoločenské a legislatívne dôsledky, čím sa zabezpečí komplexný pohľad na prínos systému.
+
+Ďalším očakávaným výstupom je návrh architektúry systému, ktorý bude zahŕňať mestské stanice, komunikačné protokoly, autonómne zóny a mechanizmy bezpečnostnej redundancie. Tento návrh poskytne jasnú štruktúru pre pilotnú implementáciu a umožní optimalizáciu prevádzky flotily dronov v mestskom prostredí.
+
+Nakoniec projekt prinesie odporúčania pre integráciu UAV technológií do konceptu smart city, vrátane návrhov pre efektívnu správu mestských služieb, ekologickejšiu logistiku, bezpečný monitoring infraštruktúry a adaptívne riadenie dopravy. Tieto odporúčania budú vychádzať z výsledkov simulácií, pilotného testovania a interdisciplinárnej analýzy, čím podporia udržateľný a bezpečný rozvoj inteligentných miest a zvýšia ich technologickú a spoločenskú hodnotu\cite{UAM-DiVito}.
 
 
 
-
-\section{Ešte dôležitejšia časť} \label{dolezitejsia}
-
-
-
-
-\section{Záver} \label{zaver} % prípadne iný variant názvu
-
-
-
-%\acknowledgement{Ak niekomu chcete poďakovať\ldots}
-
-
-% týmto sa generuje zoznam literatúry z obsahu súboru literatura.bib podľa toho, na čo sa v článku odkazujete
+\clearpage
 \bibliography{literatura}
 \bibliographystyle{plain} % prípadne alpha, abbrv alebo hociktorý iný
 \end{document}
