@@ -12,7 +12,7 @@
 \usepackage{booktabs}
 
 
-\setlength{\parskip}{15pt}
+\setlength{\parskip}{10pt}
 \pagestyle{headings}
 
 \title{Masové používanie dronov na civilne účely. (\textbf{MDCU})\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2024/25, vedenie: Vladimír Mlynarovič}} % meno a priezvisko vyučujúceho na cvičeniach
@@ -68,7 +68,15 @@ Okrem ekonomických a pracovných benefitov je dôležitý aj ekologický a ener
 Celkový ekonomický dopad projektu spočíva nielen v úsporách a zvýšenej efektivite, ale aj v posilnení inovačnej kapacity regiónu a rozvoji moderných technologických oblastí. Projekt tým podporuje dlhodobú konkurencieschopnosť a technologický pokrok, čím prispieva k trvalo udržateľnému rozvoju.
 
 \subsection{Technologie a limity súčasného stavu}
-Napriek neustálemu napredovaniu v oblasti dronov a UAV su stále dosť technologicky a fyzicky limitované. Baterie su dost neefektivne ako ich napajat pretože maximalna vydrz je v dnesnej dobe okolo 20-30min čo na nasadenie do logistiky nestačí. Taktiež maju obmedzenu maximalnu nosnosť na 2-5kg čo znamená ze kurierske spoločnosti by nemohli prevážať zásielky, ktorych váha by prevyšovala tuto hranicu čo je veľmi nevýhodne a preto aj väčšina spoločnosti zatiaľ do tejto oblasti logistiky intenzívne neinvestuje. Ďalším problémom je aj nedostatok štandardizovanej infraštruktúry U-space, po ktorej by sa drony pohybovali. Taktiež veľkým rizikom je počasie, najmä burky ktore by mohli poškodit telo dronu no taktiež vedia narušiť signál a dron nemusí isť správnym smerom.
+Napriek neustálemu pokroku v oblasti dronov a UAV zostávajú tieto technológie stále technologicky a fyzicky limitované. Jedným z najväčších problémov je neefektívnosť batérií – súčasné drony majú maximálnu výdrž približne 20 až 30 minút, čo je pri nasadení do logistiky výrazne nedostatočné. Takáto obmedzená doba letu výrazne limituje vzdialenosť a kapacitu, ktorú drony môžu pokryť pri doručovaní zásielok, najmä vo väčších mestských a prímestských oblastiach.
+
+Ďalším významným obmedzením je nosnosť dronov, ktorá sa väčšinou pohybuje medzi 2 a 5 kilogramami. To znamená, že kuriérske spoločnosti nemôžu prevážať ťažšie zásielky, čo značne znižuje praktickú použiteľnosť UAV v bežnej logistike. Tieto limity sú jedným z dôvodov, prečo väčšina spoločností zatiaľ do tejto oblasti intenzívne neinvestuje.
+
+Problémom je aj nedostatok štandardizovanej infraštruktúry U-space, ktorá by umožnila bezpečný a koordinovaný pohyb dronov vo vzdušnom priestore. Bez takéhoto systému je prevádzka dronov riziková a zložitejšia, najmä pri väčšom počte zariadení lietajúcich súčasne.
+
+Okrem technických a infraštrukturálnych obmedzení predstavuje veľkú výzvu aj počasie. Prudké búrky, silný vietor alebo intenzívne zrážky môžu poškodiť telo dronu, narušiť jeho stabilitu alebo dokonca spôsobiť poruchu navigačných a komunikačných systémov. Takéto podmienky môžu viesť k odklonu dronu zo zamýšľanej trasy a ohroziť bezpečnosť prepravy.
+
+Napriek týmto obmedzeniam je však viditeľný potenciál dronov, a preto sú súčasné výskumy a projekty zamerané na predlžovanie výdrže batérií, zvýšenie nosnosti, vývoj robustnejších komunikačných a navigačných systémov a postupnú implementáciu štandardizovanej infraštruktúry U-space. Cieľom je umožniť praktické a bezpečné nasadenie dronov v logistike a iných oblastiach, kde môžu priniesť významné ekonomické a spoločenské prínosy..
 
 \subsection{Legislatívne prekážky a regulačné požiadavky}
 Nasledujú problémy s legislatívou, ktoré významne ovplyvňujú masové nasadenie dronov v mestskom prostredí. Najväčšou prekážkou sú náročné povolenia na BVLOS (Beyond Visual Line of Sight) prevádzku, teda na lety mimo vizuálneho dohľadu operátora. Keďže ide o rizikovú formu letu, EÚ vyžaduje rozsiahlu dokumentáciu, bezpečnostné postupy, komunikáciu so správcom vzdušného priestoru a preukázanie technickej spoľahlivosti dronu. Tento proces je časovo aj administratívne náročný, čo komplikuje škálovanie flotíl UAV.
@@ -112,6 +120,13 @@ Návrh architektúry zahŕňa aj definovanie bezpečnostných scenárov, mechani
 Pre overenie navrhnutého systému sa vytvorí simulačné prostredie, ktoré umožní testovanie jeho funkcií bez rizika reálnej prevádzky. Simulácie budú zahŕňať modelovanie pohybu dronov v mestskej mape, plánovanie trás pri zvýšenej doprave a reakcie systému na výpadok stanice.
 
 Okrem toho sa budú simulovať núdzové zásahy a vizualizovať letová prevádzka, čím sa identifikujú potenciálne problémy a úzke miesta v koordinácii flotily. Pri tvorbe prototypu sa využíju nástroje na modelovanie udalostí, napríklad SimPy, UML diagramy pre návrh procesov a špecializované vizualizačné nástroje, ktoré poskytujú prehľad o dynamike systému a umožňujú optimalizáciu jeho fungovania ešte pred nasadením do reálneho prostredia.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{diagram_priklad.png}
+    \caption{Príklad diagramu simulacie}
+    \label{fig:diagram}
+\end{figure}
 
 \subsection{Pilotné nasadenie a testovanie v praxi}
 Po úspešnom overení systému v simulačnom prostredí nasleduje jeho testovanie v reálnych podmienkach na obmedzenej oblasti mesta. Cieľom pilotnej fázy je overiť praktickú funkčnosť navrhnutého systému a identifikovať možné nedostatky pred jeho širším nasadením.
