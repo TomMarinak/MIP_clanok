@@ -98,7 +98,7 @@ Okrem toho sa prevádzkovatelia stretávajú s ďalšími prekážkami, ako sú 
     \centering
     \includegraphics[width=\linewidth]{diagram_postup.png}
     \caption{Diagram implementačného rámca projektu}
-    \label{fig:diagram}
+    \label{fig:diagram1}
 \end{figure}
 
 Na základe týchto požiadaviek sú definované kľúčové funkcie systému, medzi ktoré patrí registrácia dronov, priraďovanie úloh jednotlivým jednotkám a sledovanie ich polohy v reálnom čase. Súčasne sa stanovujú technické požiadavky na senzory, batérie a komunikačné prostriedky, ktoré zabezpečia spoľahlivú a efektívnu prevádzku UAV.
@@ -107,8 +107,16 @@ Projekt zároveň zahrňuje analýzu legislatívnych obmedzení, ktoré ovplyvň
 
 Dôležitou súčasťou fázy je štúdium existujúcich technologických riešení a zahraničných výskumov. Projekt vychádza zo skúseností z UAV prieskumov civilných aplikácií, pričom kladie dôraz na výzvy a možnosti komunikácie v prostredí 5G a B5G. Tieto poznatky umožňujú navrhnúť systém, ktorý spája moderné technologické trendy s praktickými požiadavkami používateľov a súčasne rešpektuje legislatívne rámce.
 
+\clearpage
 \subsection{Návrh architektúry systému}
-Navrhovaná architektúra systému je založená na decentralizovanom modeli, ktorý zabezpečuje flexibilitu, škálovateľnosť a odolnosť celej siete dronov. Mestské stanice, fungujúce ako uzly, slúžia na nabíjanie dronov, preskladnenie zásielok a lokalizáciu jednotlivých jednotiek, čím poskytujú základnú infraštruktúru pre efektívnu prevádzku.
+Navrhovaná architektúra systému je založená na decentralizovanom modeli (viď obrázok \ref{fig:diagram2}), ktorý zabezpečuje flexibilitu, škálovateľnosť a odolnosť celej siete dronov. Mestské stanice, fungujúce ako uzly, slúžia na nabíjanie dronov, preskladnenie zásielok a lokalizáciu jednotlivých jednotiek, čím poskytujú základnú infraštruktúru pre efektívnu prevádzku.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{deployment_diagram.png}
+    \caption{Diagram architektúry systému}
+    \label{fig:diagram2}
+\end{figure}
 
 Horizontálna komunikácia medzi dronmi je realizovaná prostredníctvom mesh siete, čo umožňuje rýchlu a spoľahlivú výmenu informácií bez závislosti od centrálneho bodu. Mobilné siete, najmä 5G, slúžia ako záložný komunikačný kanál, čím sa zabezpečuje kontinuita operácií aj pri výpadku primárnej siete - čo korešponduje s prácou „A Survey on Cellular-connected UAVs: Design Challenges, Enabling 5G/B5G Innovations, and Experimental Advancements“\cite{Mishra:CellularUAV}.
 
@@ -116,6 +124,7 @@ Pre lepšiu organizáciu a riadenie prevádzky sú mestské oblasti rozdelené d
 
 Návrh architektúry zahŕňa aj definovanie bezpečnostných scenárov, mechanizmov redundancie a postupov pre reakciu na núdzové situácie, čím sa zabezpečuje vysoká úroveň spoľahlivosti a bezpečnosti celého systému.
 
+\clearpage
 \subsection{Prototyp a simulačné overenie systému}
 Pre overenie navrhnutého systému sa vytvorí simulačné prostredie, ktoré umožní testovanie jeho funkcií bez rizika reálnej prevádzky. Simulácie budú zahŕňať modelovanie pohybu dronov v mestskej mape, plánovanie trás pri zvýšenej doprave a reakcie systému na výpadok stanice.
 
@@ -125,7 +134,7 @@ Okrem toho sa budú simulovať núdzové zásahy a vizualizovať letová prevád
     \centering
     \includegraphics[width=\linewidth]{diagram_priklad.png}
     \caption{Príklad diagramu simulacie}
-    \label{fig:diagram}
+    \label{fig:diagram3}
 \end{figure}
 
 \subsection{Pilotné nasadenie a testovanie v praxi}
@@ -159,17 +168,20 @@ Okrem toho zvyšuje bezpečnosť a efektivitu monitoringu infraštruktúry, čí
 
 \clearpage
 \section{Očakávané výsledky}
-Projekt očakáva dosiahnutie viacerých konkrétnych a merateľných výsledkov, ktoré prispejú k rozvoju UAV technológií a ich integrácii do mestského prostredia. Jedným z hlavných výstupov bude funkčný prototyp systému, ktorý umožní praktické testovanie navrhnutých funkcií, od registrácie a sledovania dronov až po koordináciu úloh a autonómne rozhodovanie v decentralizovanom prostredí. Tento prototyp poslúži ako základ pre simulácie, pilotné testy a ďalší výskum v oblasti mestských UAV operácií.
+Okrem uvedených výstupov sa očakáva aj vytvorenie rozsiahleho datasetu zo simulačných a pilotných testov, ktorý bude obsahovať dáta o komunikácii dronov, ich reakčných časoch, presnosti navigácie či správaní v rôznych urbanistických scenároch. Tento dataset poslúži ako cenný zdroj pre ďalší výskum, tréning modelov umelej inteligencie a pre optimalizáciu rozhodovacích algoritmov v autonómnych systémoch. Zároveň umožní porovnávať rôzne prístupy k riadeniu flotíl a hodnotiť ich efektivitu v reálnych podmienkach.
 
-Projekt tiež poskytne detailnú analýzu dopadu dronov na rôzne sektory, vrátane logistiky, zdravotníctva a správy miest. Analýza sa zameria nielen na technologické aspekty, ako sú spoľahlivosť komunikácie, presnosť senzorov a efektívnosť riadiacich protokolov, ale aj na spoločenské a legislatívne dôsledky, čím sa zabezpečí komplexný pohľad na prínos systému.
+Projekt tiež prinesie metodiku pre hodnotenie bezpečnosti a spoľahlivosti UAV operácií v mestskom prostredí. Táto metodika bude zahŕňať definíciu hodnotiacich kritérií, postupy testovania a odporúčané limity pre bezpečnú prevádzku. Súčasťou bude aj analýza rizík, ktorá identifikuje potenciálne hrozby pri nasadení dronov — od technických zlyhaní až po nepredvídateľné udalosti v mestskej prevádzke. Vypracovanie metodiky pomôže tvorcom politík, mestským samosprávam aj technickým tímom efektívnejšie plánovať a riadiť integráciu UAV do každodenných služieb.
 
-Ďalším očakávaným výstupom je návrh architektúry systému, ktorý bude zahŕňať mestské stanice, komunikačné protokoly, autonómne zóny a mechanizmy bezpečnostnej redundancie. Tento návrh poskytne jasnú štruktúru pre pilotnú implementáciu a umožní optimalizáciu prevádzky flotily dronov v mestskom prostredí.
+Ďalším pridruženým výstupom bude aj návrh postupov pre škálovanie systému v prípade jeho budúceho rozširovania. Tento návrh bude riešiť koordináciu väčších flotíl, zvýšené komunikačné nároky, integráciu rôznych typov UAV a požiadavky na rozšírené dátové kapacity. Rovnako bude definovať odporúčanú štruktúru infraštruktúry pre mestá rôznych veľkostí, aby bolo možné systém flexibilne adaptovať podľa potrieb.
 
-Nakoniec projekt prinesie odporúčania pre integráciu UAV technológií do konceptu smart city, vrátane návrhov pre efektívnu správu mestských služieb, ekologickejšiu logistiku, bezpečný monitoring infraštruktúry a adaptívne riadenie dopravy. Tieto odporúčania budú vychádzať z výsledkov simulácií, pilotného testovania a interdisciplinárnej analýzy, čím podporia udržateľný a bezpečný rozvoj inteligentných miest a zvýšia ich technologickú a spoločenskú hodnotu\cite{UAM-DiVito}.
+Projekt prispeje aj k zvýšeniu povedomia o možnostiach využitia UAV v mestskom prostredí. Organizované budú informačné a prezentačné aktivity, ktoré predstavia výsledky výskumu odborníkom z verejnej správy, priemyslu a akademickej sféry. Tieto aktivity zabezpečia lepšiu pripravenosť zainteresovaných subjektov na budúce zavádzanie UAV technológií a podporia vytváranie strategických partnerstiev.
+
+V neposlednom rade sa projekt zameria na identifikáciu ekonomických prínosov implementácie UAV systémov. Súčasťou výstupov bude ekonomická analýza porovnávajúca tradičné formy mestských služieb s modelmi podporovanými autonómnymi dronmi. Analýza poskytne odhad úspor nákladov, potenciál zvýšenia efektívnosti, vplyv na trh práce a dlhodobé dopady na rozpočty miest. Tieto výsledky umožnia kompetentným subjektom kvalifikovane posúdiť návratnosť investícií.
 
 
 
 \clearpage
-\bibliography{literatura}
-\bibliographystyle{plain} % prípadne alpha, abbrv alebo hociktorý iný
+\nocite{*}
+\bibliographystyle{unsrt}
+\bibliography{literatura_ku_clanku} % prípadne alpha, abbrv alebo hociktorý iný
 \end{document}
